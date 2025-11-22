@@ -29,7 +29,7 @@ def _strip_prefix(state_dict: Dict[str, torch.Tensor]) -> Dict[str, torch.Tensor
 
 def load_dinov3_teacher(checkpoint_path: str, device: torch.device) -> nn.Module:
     teacher = timm.create_model(
-        "vit_small_patch16_224",
+        "vit_small_patch16_224", # teacher model name
         img_size=224,
         num_classes=1000,
     )
@@ -45,7 +45,7 @@ def load_dinov3_teacher(checkpoint_path: str, device: torch.device) -> nn.Module
 
 def build_student(num_classes: int, device: torch.device) -> nn.Module:
     student = timm.create_model(
-        "vit_tiny_patch16_224",
+        "vit_tiny_patch16_224", # student model name
         img_size=224,
         num_classes=num_classes,
     )
@@ -54,7 +54,7 @@ def build_student(num_classes: int, device: torch.device) -> nn.Module:
 
 @dataclass
 class DistillConfig:
-    dataset_path: str = str(Path("Image_AnKhe_Goc") / "image_AnKhe_goc")
+    dataset_path: str = str(Path(" ") / " ") # Provide path to your dataset
     teacher_ckpt: str = "dinov3_vits16_pretrain_lvd1689m-08c60483.pth"
     output_path: str = "student_dinov3_kl.pth"
 
